@@ -61,16 +61,8 @@ df_analyze called
 ;;              tick updated: insn 8 into queue with cost=1
 ;;              Ready-->Q: insn 18: queued for 1 cycles (resource conflict).
 ;;              Ready-->Q: insn 19: queued for 1 cycles (resource conflict).
-;;                     RFS_LAST_INSN: 1: 14
-;;              Ready list after ready_sort:      13:7:prio=0  14:8:prio=0
-;;      Ready list (t =   0):    13:7:prio=0  14:8:prio=0
-;;        0--> b  0: i  14 clobber r136                            :nothing
-;;              Ready list after ready_sort:      13:7:prio=0
-;;      Ready list (t =   0):    13:7:prio=0
-;;        0--> b  0: i  13 clobber a0                              :nothing
-;;              dependencies resolved: insn 12
-;;              tick updated: insn 12 into ready
-;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
+;;              Ready-->Q: insn 13: queued for 1 cycles (unrecog insn).
 ;;      Ready list (t =   0):
 ;;      Advance the current state: 1.
 ;;      Advance the current state: 1.
@@ -78,19 +70,21 @@ df_analyze called
 ;;      Advance the current state: 1.
 ;;      Advance the current state: 1.
 ;;      Advance the current state: 1.
-;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 13: moving to ready without stalls
+;;              Q-->Ready: insn 14: moving to ready without stalls
 ;;              Q-->Ready: insn 19: moving to ready without stalls
 ;;              Q-->Ready: insn 18: moving to ready without stalls
 ;;              Q-->Ready: insn 8: moving to ready without stalls
-;;              Ready list after queue_to_ready:  8:4:prio=2  18:2:prio=2  19:3:prio=1  12:9:prio=0
-;;                      RFS_PRIORITY: 16: 19 8
+;;              Ready list after queue_to_ready:  8:4:prio=2  18:2:prio=2  19:3:prio=1  14:8:prio=0  13:7:prio=0
+;;              Ready-->Q: insn 13: queued for 1 cycles (unrecog insn).
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
+;;                      RFS_PRIORITY: 7: 8
 ;;                           RFS_TIE: 4: 18
-;;              Ready list after ready_sort:      12:9:prio=0  19:3:prio=1  8:4:prio=2  18:2:prio=2
-;;      Ready list (t =   1):    12:9:prio=0  19:3:prio=1  8:4:prio=2  18:2:prio=2
+;;              Ready list after ready_sort:      19:3:prio=1  8:4:prio=2  18:2:prio=2
+;;      Ready list (t =   1):    19:3:prio=1  8:4:prio=2  18:2:prio=2
 ;;        1--> b  0: i  18 r143=a1                                 :alu
 ;;              Ready-->Q: insn 8: queued for 1 cycles (resource conflict).
 ;;              Ready-->Q: insn 19: queued for 1 cycles (resource conflict).
-;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
 ;;      Ready list (t =   1):
 ;;      Advance the current state: 2.
 ;;      Advance the current state: 2.
@@ -98,19 +92,22 @@ df_analyze called
 ;;      Advance the current state: 2.
 ;;      Advance the current state: 2.
 ;;      Advance the current state: 2.
-;;              Q-->Ready: insn 12: moving to ready without stalls
 ;;              Q-->Ready: insn 19: moving to ready without stalls
 ;;              Q-->Ready: insn 8: moving to ready without stalls
-;;              Ready list after queue_to_ready:  8:4:prio=2  19:3:prio=1  12:9:prio=0
-;;                      RFS_PRIORITY: 11: 19 8
-;;              Ready list after ready_sort:      12:9:prio=0  19:3:prio=1  8:4:prio=2
-;;      Ready list (t =   2):    12:9:prio=0  19:3:prio=1  8:4:prio=2
+;;              Q-->Ready: insn 14: moving to ready without stalls
+;;              Q-->Ready: insn 13: moving to ready without stalls
+;;              Ready list after queue_to_ready:  13:7:prio=0  14:8:prio=0  8:4:prio=2  19:3:prio=1
+;;                      RFS_PRIORITY: 16: 19 8
+;;                           RFS_TIE: 4: 13
+;;              Ready list after ready_sort:      14:8:prio=0  13:7:prio=0  19:3:prio=1  8:4:prio=2
+;;      Ready list (t =   2):    14:8:prio=0  13:7:prio=0  19:3:prio=1  8:4:prio=2
 ;;        2--> b  0: i   8 r140=r142#0+0x2                         :alu
 ;;              dependencies resolved: insn 9
 ;;              Ready-->Q: insn 9: queued for 1 cycles (change queue index).
 ;;              tick updated: insn 9 into queue with cost=1
 ;;              Ready-->Q: insn 19: queued for 1 cycles (resource conflict).
-;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 13: queued for 1 cycles (unrecog insn).
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
 ;;      Ready list (t =   2):
 ;;      Advance the current state: 3.
 ;;      Advance the current state: 3.
@@ -118,17 +115,18 @@ df_analyze called
 ;;      Advance the current state: 3.
 ;;      Advance the current state: 3.
 ;;      Advance the current state: 3.
-;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 14: moving to ready without stalls
+;;              Q-->Ready: insn 13: moving to ready without stalls
 ;;              Q-->Ready: insn 19: moving to ready without stalls
 ;;              Q-->Ready: insn 9: moving to ready without stalls
-;;              Ready list after queue_to_ready:  9:5:prio=1  19:3:prio=1  12:9:prio=0
-;;                      RFS_PRIORITY: 7: 9
-;;                           RFS_TIE: 4: 19
-;;              Ready list after ready_sort:      12:9:prio=0  9:5:prio=1  19:3:prio=1
-;;      Ready list (t =   3):    12:9:prio=0  9:5:prio=1  19:3:prio=1
+;;              Ready list after queue_to_ready:  9:5:prio=1  19:3:prio=1  13:7:prio=0  14:8:prio=0
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
+;;              Ready-->Q: insn 13: queued for 1 cycles (unrecog insn).
+;;                           RFS_TIE: 1: 19
+;;              Ready list after ready_sort:      9:5:prio=1  19:3:prio=1
+;;      Ready list (t =   3):    9:5:prio=1  19:3:prio=1
 ;;        3--> b  0: i  19 r144=a2                                 :alu
 ;;              Ready-->Q: insn 9: queued for 1 cycles (resource conflict).
-;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
 ;;      Ready list (t =   3):
 ;;      Advance the current state: 4.
 ;;      Advance the current state: 4.
@@ -136,17 +134,20 @@ df_analyze called
 ;;      Advance the current state: 4.
 ;;      Advance the current state: 4.
 ;;      Advance the current state: 4.
-;;              Q-->Ready: insn 12: moving to ready without stalls
 ;;              Q-->Ready: insn 9: moving to ready without stalls
-;;              Ready list after queue_to_ready:  9:5:prio=1  12:9:prio=0
-;;                      RFS_PRIORITY: 1: 9
-;;              Ready list after ready_sort:      12:9:prio=0  9:5:prio=1
-;;      Ready list (t =   4):    12:9:prio=0  9:5:prio=1
+;;              Q-->Ready: insn 13: moving to ready without stalls
+;;              Q-->Ready: insn 14: moving to ready without stalls
+;;              Ready list after queue_to_ready:  14:8:prio=0  13:7:prio=0  9:5:prio=1
+;;                      RFS_PRIORITY: 6: 9
+;;                           RFS_TIE: 5: 13
+;;              Ready list after ready_sort:      14:8:prio=0  13:7:prio=0  9:5:prio=1
+;;      Ready list (t =   4):    14:8:prio=0  13:7:prio=0  9:5:prio=1
 ;;        4--> b  0: i   9 r141=r140+r143#0                        :alu
 ;;              dependencies resolved: insn 10
 ;;              Ready-->Q: insn 10: queued for 1 cycles (change queue index).
 ;;              tick updated: insn 10 into queue with cost=1
-;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 13: queued for 1 cycles (unrecog insn).
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
 ;;      Ready list (t =   4):
 ;;      Advance the current state: 5.
 ;;      Advance the current state: 5.
@@ -154,14 +155,15 @@ df_analyze called
 ;;      Advance the current state: 5.
 ;;      Advance the current state: 5.
 ;;      Advance the current state: 5.
-;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 14: moving to ready without stalls
+;;              Q-->Ready: insn 13: moving to ready without stalls
 ;;              Q-->Ready: insn 10: moving to ready without stalls
-;;              Ready list after queue_to_ready:  10:6:prio=0  12:9:prio=0
-;;                           RFS_TIE: 1: 10
-;;              Ready list after ready_sort:      12:9:prio=0  10:6:prio=0
-;;      Ready list (t =   5):    12:9:prio=0  10:6:prio=0
+;;              Ready list after queue_to_ready:  10:6:prio=0  13:7:prio=0  14:8:prio=0
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
+;;              Ready-->Q: insn 13: queued for 1 cycles (unrecog insn).
+;;              Ready list after ready_sort:      10:6:prio=0
+;;      Ready list (t =   5):    10:6:prio=0
 ;;        5--> b  0: i  10 [r144]=r141                             :alu
-;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
 ;;      Ready list (t =   5):
 ;;      Advance the current state: 6.
 ;;      Advance the current state: 6.
@@ -169,35 +171,54 @@ df_analyze called
 ;;      Advance the current state: 6.
 ;;      Advance the current state: 6.
 ;;      Advance the current state: 6.
-;;              Q-->Ready: insn 12: moving to ready without stalls
-;;              Ready list after queue_to_ready:  12:9:prio=0
+;;              Q-->Ready: insn 13: moving to ready without stalls
+;;              Q-->Ready: insn 14: moving to ready without stalls
+;;              Ready list after queue_to_ready:  14:8:prio=0  13:7:prio=0
+;;                           RFS_TIE: 1: 13
+;;              Ready list after ready_sort:      14:8:prio=0  13:7:prio=0
+;;      Ready list (t =   6):    14:8:prio=0  13:7:prio=0
+;;        6--> b  0: i  13 clobber a0                              :nothing
+;;              Ready-->Q: insn 14: queued for 1 cycles (unrecog insn).
+;;      Ready list (t =   6):
+;;      Advance the current state: 7.
+;;      Advance the current state: 7.
+;;      Advance the current state: 7.
+;;      Advance the current state: 7.
+;;      Advance the current state: 7.
+;;      Advance the current state: 7.
+;;              Q-->Ready: insn 14: moving to ready without stalls
+;;              Ready list after queue_to_ready:  14:8:prio=0
+;;              Ready list after ready_sort:      14:8:prio=0
+;;      Ready list (t =   7):    14:8:prio=0
+;;        7--> b  0: i  14 clobber r136                            :nothing
+;;              dependencies resolved: insn 12
+;;              tick updated: insn 12 into ready
 ;;              Ready list after ready_sort:      12:9:prio=0
-;;      Ready list (t =   6):    12:9:prio=0
-;;        6--> b  0: i  12 a0=r136                                 :alu
+;;      Ready list (t =   7):    12:9:prio=0
+;;        7--> b  0: i  12 a0=r136                                 :alu
 ;;              dependencies resolved: insn 15
 ;;              tick updated: insn 15 into ready
 ;;              Ready list after ready_sort:      15:10:prio=0
-;;      Ready list (t =   6):    15:10:prio=0
-;;        6--> b  0: i  15 use a0                                  :nothing
-;;      Ready list (t =   6):
+;;      Ready list (t =   7):    15:10:prio=0
+;;        7--> b  0: i  15 use a0                                  :nothing
+;;      Ready list (t =   7):
 ;;      Ready list (final):
-;;   total time = 6
+;;   total time = 7
 ;;   new head = 17
 ;;   new tail = 15
 ;;      | insn | prio |
 ;;      |   17 |    3 | r142=a0                        alu
-;;      |   14 |    0 | clobber r136                   nothing
-;;      |   13 |    0 | clobber a0                     nothing
 ;;      |   18 |    2 | r143=a1                        alu
 ;;      |    8 |    2 | r140=r142#0+0x2                alu
 ;;      |   19 |    1 | r144=a2                        alu
 ;;      |    9 |    1 | r141=r140+r143#0               alu
 ;;      |   10 |    0 | [r144]=r141                    alu
+;;      |   13 |    0 | clobber a0                     nothing
+;;      |   14 |    0 | clobber r136                   nothing
 ;;      |   12 |    0 | a0=r136                        alu
 ;;      |   15 |    0 | use a0                         nothing
-;; TOTAL         RFS_PRIORITY: 55
-;; TOTAL        RFS_LAST_INSN: 1
-;; TOTAL              RFS_TIE: 9
+;; TOTAL         RFS_PRIORITY: 49
+;; TOTAL              RFS_TIE: 15
 
 saving state for edge 2->1
 
@@ -237,16 +258,11 @@ Dataflow summary:
 (note 3 2 4 2 NOTE_INSN_DELETED)
 (note 4 3 5 2 NOTE_INSN_DELETED)
 (note 5 4 17 2 NOTE_INSN_FUNCTION_BEG)
-(insn 17 5 14 2 (set (reg:DI 142)
+(insn 17 5 18 2 (set (reg:DI 142)
         (reg:DI 10 a0 [ Int_1_Par_Val ])) "../test.c":16:1 179 {*movdi_64bit}
      (expr_list:REG_DEAD (reg:DI 10 a0 [ Int_1_Par_Val ])
         (nil)))
-(insn 14 17 13 2 (clobber (reg:DI 136 [ <retval> ])) "../test.c":21:1 -1
-     (nil))
-(insn 13 14 18 2 (clobber (reg/i:DI 10 a0)) "../test.c":21:1 -1
-     (expr_list:REG_UNUSED (reg/i:DI 10 a0)
-        (nil)))
-(insn 18 13 8 2 (set (reg:DI 143)
+(insn 18 17 8 2 (set (reg:DI 143)
         (reg:DI 11 a1 [ Int_2_Par_Val ])) "../test.c":16:1 179 {*movdi_64bit}
      (expr_list:REG_DEAD (reg:DI 11 a1 [ Int_2_Par_Val ])
         (nil)))
@@ -265,12 +281,17 @@ Dataflow summary:
      (expr_list:REG_DEAD (reg:DI 143)
         (expr_list:REG_DEAD (reg:SI 140 [ Int_Loc ])
             (nil))))
-(insn 10 9 12 2 (set (mem:SI (reg:DI 144) [1 *Int_Par_Ref_6(D)+0 S4 A32])
+(insn 10 9 13 2 (set (mem:SI (reg:DI 144) [1 *Int_Par_Ref_6(D)+0 S4 A32])
         (reg:SI 141)) "../test.c":20:16 180 {*movsi_internal}
      (expr_list:REG_DEAD (reg:DI 144)
         (expr_list:REG_DEAD (reg:SI 141)
             (nil))))
-(insn 12 10 15 2 (set (reg/i:DI 10 a0)
+(insn 13 10 14 2 (clobber (reg/i:DI 10 a0)) "../test.c":21:1 -1
+     (expr_list:REG_UNUSED (reg/i:DI 10 a0)
+        (nil)))
+(insn 14 13 12 2 (clobber (reg:DI 136 [ <retval> ])) "../test.c":21:1 -1
+     (nil))
+(insn 12 14 15 2 (set (reg/i:DI 10 a0)
         (reg:DI 136 [ <retval> ])) "../test.c":21:1 179 {*movdi_64bit}
      (expr_list:REG_DEAD (reg:DI 136 [ <retval> ])
         (nil)))
