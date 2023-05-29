@@ -1,0 +1,283 @@
+
+;; Function Proc_7 (Proc_7, funcdef_no=0, decl_uid=2272, cgraph_uid=1, symbol_order=0)
+
+starting the processing of deferred insns
+ending the processing of deferred insns
+df_analyze called
+;;   ======================================================
+;;   -- basic block 2 from 17 to 15 -- before reload
+;;   ======================================================
+
+;;      | insn | prio |
+;;      |   17 |    3 | r142=a0                        alu
+;;      |   18 |    2 | r143=a1                        alu
+;;      |   19 |    1 | r144=a2                        alu
+;;      |    8 |    2 | r140=r142#0+0x2                alu
+;;      |    9 |    1 | r141=r140+r143#0               alu
+;;      |   10 |    0 | [r144]=r141                    alu
+;;      |   13 |    0 | clobber a0                     nothing
+;;      |   14 |    0 | clobber r136                   nothing
+;;      |   12 |    0 | a0=r136                        alu
+;;      |   15 |    0 | use a0                         nothing
+;;   --------------- forward dependences: ------------
+
+;;   --- Region Dependences --- b 2 bb 0
+;;      insn  code    bb   dep  prio  cost   reservation
+;;      ----  ----    --   ---  ----  ----   -----------
+;;       17   179     2     0     3     1   alu : 15 12 13 8
+;;       18   179     2     0     2     1   alu : 15 9
+;;       19   179     2     0     1     1   alu : 15 10
+;;        8     4     2     1     2     1   alu : 15 9
+;;        9     4     2     2     1     1   alu : 15 10
+;;       10   180     2     2     0     1   alu : 15
+;;       13    -1     2     1     0     0   nothing     : 15 12
+;;       14    -1     2     0     0     0   nothing     : 15 12
+;;       12   179     2     3     0     1   alu : 15m
+;;       15    -1     2     9     0     0   nothing     :
+
+;;              dependencies resolved: insn 17
+;;              tick updated: insn 17 into ready
+;;              dependencies resolved: insn 18
+;;              tick updated: insn 18 into ready
+;;              dependencies resolved: insn 19
+;;              tick updated: insn 19 into ready
+;;              dependencies resolved: insn 14
+;;              tick updated: insn 14 into ready
+;;      Advance the current state: 0.
+;;      Advance the current state: 0.
+;;      Advance the current state: 0.
+;;      Advance the current state: 0.
+;;      Advance the current state: 0.
+;;      Advance the current state: 0.
+;;              Ready list after queue_to_ready:  14:8:prio=0  19:3:prio=1  18:2:prio=2  17:1:prio=3
+;;                      RFS_PRIORITY: 20: 19 18 17
+;;              Ready list after ready_sort:      14:8:prio=0  19:3:prio=1  18:2:prio=2  17:1:prio=3
+;;      Ready list (t =   0):    14:8:prio=0  19:3:prio=1  18:2:prio=2  17:1:prio=3
+;;        0--> b  0: i  17 r142=a0                                 :alu
+;;              dependencies resolved: insn 13
+;;              tick updated: insn 13 into ready
+;;              dependencies resolved: insn 8
+;;              Ready-->Q: insn 8: queued for 1 cycles (change queue index).
+;;              tick updated: insn 8 into queue with cost=1
+;;              Ready-->Q: insn 18: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 19: queued for 1 cycles (resource conflict).
+;;                     RFS_LAST_INSN: 1: 14
+;;              Ready list after ready_sort:      13:7:prio=0  14:8:prio=0
+;;      Ready list (t =   0):    13:7:prio=0  14:8:prio=0
+;;        0--> b  0: i  14 clobber r136                            :nothing
+;;              Ready list after ready_sort:      13:7:prio=0
+;;      Ready list (t =   0):    13:7:prio=0
+;;        0--> b  0: i  13 clobber a0                              :nothing
+;;              dependencies resolved: insn 12
+;;              tick updated: insn 12 into ready
+;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;      Ready list (t =   0):
+;;      Advance the current state: 1.
+;;      Advance the current state: 1.
+;;      Advance the current state: 1.
+;;      Advance the current state: 1.
+;;      Advance the current state: 1.
+;;      Advance the current state: 1.
+;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 19: moving to ready without stalls
+;;              Q-->Ready: insn 18: moving to ready without stalls
+;;              Q-->Ready: insn 8: moving to ready without stalls
+;;              Ready list after queue_to_ready:  8:4:prio=2  18:2:prio=2  19:3:prio=1  12:9:prio=0
+;;                      RFS_PRIORITY: 16: 19 8
+;;                           RFS_TIE: 4: 18
+;;              Ready list after ready_sort:      12:9:prio=0  19:3:prio=1  8:4:prio=2  18:2:prio=2
+;;      Ready list (t =   1):    12:9:prio=0  19:3:prio=1  8:4:prio=2  18:2:prio=2
+;;        1--> b  0: i  18 r143=a1                                 :alu
+;;              Ready-->Q: insn 8: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 19: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;      Ready list (t =   1):
+;;      Advance the current state: 2.
+;;      Advance the current state: 2.
+;;      Advance the current state: 2.
+;;      Advance the current state: 2.
+;;      Advance the current state: 2.
+;;      Advance the current state: 2.
+;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 19: moving to ready without stalls
+;;              Q-->Ready: insn 8: moving to ready without stalls
+;;              Ready list after queue_to_ready:  8:4:prio=2  19:3:prio=1  12:9:prio=0
+;;                      RFS_PRIORITY: 11: 19 8
+;;              Ready list after ready_sort:      12:9:prio=0  19:3:prio=1  8:4:prio=2
+;;      Ready list (t =   2):    12:9:prio=0  19:3:prio=1  8:4:prio=2
+;;        2--> b  0: i   8 r140=r142#0+0x2                         :alu
+;;              dependencies resolved: insn 9
+;;              Ready-->Q: insn 9: queued for 1 cycles (change queue index).
+;;              tick updated: insn 9 into queue with cost=1
+;;              Ready-->Q: insn 19: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;      Ready list (t =   2):
+;;      Advance the current state: 3.
+;;      Advance the current state: 3.
+;;      Advance the current state: 3.
+;;      Advance the current state: 3.
+;;      Advance the current state: 3.
+;;      Advance the current state: 3.
+;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 19: moving to ready without stalls
+;;              Q-->Ready: insn 9: moving to ready without stalls
+;;              Ready list after queue_to_ready:  9:5:prio=1  19:3:prio=1  12:9:prio=0
+;;                      RFS_PRIORITY: 7: 9
+;;                           RFS_TIE: 4: 19
+;;              Ready list after ready_sort:      12:9:prio=0  9:5:prio=1  19:3:prio=1
+;;      Ready list (t =   3):    12:9:prio=0  9:5:prio=1  19:3:prio=1
+;;        3--> b  0: i  19 r144=a2                                 :alu
+;;              Ready-->Q: insn 9: queued for 1 cycles (resource conflict).
+;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;      Ready list (t =   3):
+;;      Advance the current state: 4.
+;;      Advance the current state: 4.
+;;      Advance the current state: 4.
+;;      Advance the current state: 4.
+;;      Advance the current state: 4.
+;;      Advance the current state: 4.
+;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 9: moving to ready without stalls
+;;              Ready list after queue_to_ready:  9:5:prio=1  12:9:prio=0
+;;                      RFS_PRIORITY: 1: 9
+;;              Ready list after ready_sort:      12:9:prio=0  9:5:prio=1
+;;      Ready list (t =   4):    12:9:prio=0  9:5:prio=1
+;;        4--> b  0: i   9 r141=r140+r143#0                        :alu
+;;              dependencies resolved: insn 10
+;;              Ready-->Q: insn 10: queued for 1 cycles (change queue index).
+;;              tick updated: insn 10 into queue with cost=1
+;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;      Ready list (t =   4):
+;;      Advance the current state: 5.
+;;      Advance the current state: 5.
+;;      Advance the current state: 5.
+;;      Advance the current state: 5.
+;;      Advance the current state: 5.
+;;      Advance the current state: 5.
+;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Q-->Ready: insn 10: moving to ready without stalls
+;;              Ready list after queue_to_ready:  10:6:prio=0  12:9:prio=0
+;;                           RFS_TIE: 1: 10
+;;              Ready list after ready_sort:      12:9:prio=0  10:6:prio=0
+;;      Ready list (t =   5):    12:9:prio=0  10:6:prio=0
+;;        5--> b  0: i  10 [r144]=r141                             :alu
+;;              Ready-->Q: insn 12: queued for 1 cycles (resource conflict).
+;;      Ready list (t =   5):
+;;      Advance the current state: 6.
+;;      Advance the current state: 6.
+;;      Advance the current state: 6.
+;;      Advance the current state: 6.
+;;      Advance the current state: 6.
+;;      Advance the current state: 6.
+;;              Q-->Ready: insn 12: moving to ready without stalls
+;;              Ready list after queue_to_ready:  12:9:prio=0
+;;              Ready list after ready_sort:      12:9:prio=0
+;;      Ready list (t =   6):    12:9:prio=0
+;;        6--> b  0: i  12 a0=r136                                 :alu
+;;              dependencies resolved: insn 15
+;;              tick updated: insn 15 into ready
+;;              Ready list after ready_sort:      15:10:prio=0
+;;      Ready list (t =   6):    15:10:prio=0
+;;        6--> b  0: i  15 use a0                                  :nothing
+;;      Ready list (t =   6):
+;;      Ready list (final):
+;;   total time = 6
+;;   new head = 17
+;;   new tail = 15
+;;      | insn | prio |
+;;      |   17 |    3 | r142=a0                        alu
+;;      |   14 |    0 | clobber r136                   nothing
+;;      |   13 |    0 | clobber a0                     nothing
+;;      |   18 |    2 | r143=a1                        alu
+;;      |    8 |    2 | r140=r142#0+0x2                alu
+;;      |   19 |    1 | r144=a2                        alu
+;;      |    9 |    1 | r141=r140+r143#0               alu
+;;      |   10 |    0 | [r144]=r141                    alu
+;;      |   12 |    0 | a0=r136                        alu
+;;      |   15 |    0 | use a0                         nothing
+;; TOTAL         RFS_PRIORITY: 55
+;; TOTAL        RFS_LAST_INSN: 1
+;; TOTAL              RFS_TIE: 9
+
+saving state for edge 2->1
+
+;; Procedure interblock/speculative motions == 0/0
+
+
+starting the processing of deferred insns
+ending the processing of deferred insns
+
+
+Proc_7
+
+Dataflow summary:
+;;  fully invalidated by EH      0 [zero] 3 [gp] 4 [tp] 5 [t0] 6 [t1] 7 [t2] 10 [a0] 11 [a1] 12 [a2] 13 [a3] 14 [a4] 15 [a5] 16 [a6] 17 [a7] 28 [t3] 29 [t4] 30 [t5] 31 [t6] 32 [ft0] 33 [ft1] 34 [ft2] 35 [ft3] 36 [ft4] 37 [ft5] 38 [ft6] 39 [ft7] 42 [fa0] 43 [fa1] 44 [fa2] 45 [fa3] 46 [fa4] 47 [fa5] 48 [fa6] 49 [fa7] 60 [ft8] 61 [ft9] 62 [ft10] 63 [ft11] 66 [vl] 67 [vtype] 68 [vxrm] 69 [N/A] 70 [N/A] 71 [N/A] 72 [N/A] 73 [N/A] 74 [N/A] 75 [N/A] 76 [N/A] 77 [N/A] 78 [N/A] 79 [N/A] 80 [N/A] 81 [N/A] 82 [N/A] 83 [N/A] 84 [N/A] 85 [N/A] 86 [N/A] 87 [N/A] 88 [N/A] 89 [N/A] 90 [N/A] 91 [N/A] 92 [N/A] 93 [N/A] 94 [N/A] 95 [N/A] 96 [v0] 97 [v1] 98 [v2] 99 [v3] 100 [v4] 101 [v5] 102 [v6] 103 [v7] 104 [v8] 105 [v9] 106 [v10] 107 [v11] 108 [v12] 109 [v13] 110 [v14] 111 [v15] 112 [v16] 113 [v17] 114 [v18] 115 [v19] 116 [v20] 117 [v21] 118 [v22] 119 [v23] 120 [v24] 121 [v25] 122 [v26] 123 [v27] 124 [v28] 125 [v29] 126 [v30] 127 [v31]
+;;  hardware regs used   2 [sp] 64 [arg] 65 [frame]
+;;  regular block artificial uses        2 [sp] 8 [s0] 64 [arg] 65 [frame]
+;;  eh block artificial uses     2 [sp] 8 [s0] 64 [arg] 65 [frame]
+;;  entry block defs     1 [ra] 2 [sp] 8 [s0] 10 [a0] 11 [a1] 12 [a2] 13 [a3] 14 [a4] 15 [a5] 16 [a6] 17 [a7] 42 [fa0] 43 [fa1] 44 [fa2] 45 [fa3] 46 [fa4] 47 [fa5] 48 [fa6] 49 [fa7] 64 [arg] 65 [frame]
+;;  exit block uses      1 [ra] 2 [sp] 8 [s0] 10 [a0] 65 [frame]
+;;  regs ever live       10 [a0] 11 [a1] 12 [a2]
+;;  ref usage   r1={1d,1u} r2={1d,2u} r8={1d,2u} r10={3d,3u} r11={1d,1u} r12={1d,1u} r13={1d} r14={1d} r15={1d} r16={1d} r17={1d} r42={1d} r43={1d} r44={1d} r45={1d} r46={1d} r47={1d} r48={1d} r49={1d} r64={1d,1u} r65={1d,2u} r136={1d,1u} r140={1d,1u} r141={1d,1u} r142={1d,1u} r143={1d,1u} r144={1d,1u}
+;;    total ref usage 48{29d,19u,0e} in 10{10 regular + 0 call} insns.
+(note 1 0 6 NOTE_INSN_DELETED)
+;; basic block 2, loop depth 0, count 1073741824 (estimated locally), maybe hot
+;;  prev block 0, next block 1, flags: (REACHABLE, RTL)
+;;  pred:       ENTRY [always]  count:1073741824 (estimated locally) (FALLTHRU)
+;; bb 2 artificial_defs: { }
+;; bb 2 artificial_uses: { u-1(2){ }u-1(8){ }u-1(64){ }u-1(65){ }}
+;; lr  in        1 [ra] 2 [sp] 8 [s0] 10 [a0] 11 [a1] 12 [a2] 64 [arg] 65 [frame]
+;; lr  use       2 [sp] 8 [s0] 10 [a0] 11 [a1] 12 [a2] 64 [arg] 65 [frame]
+;; lr  def       10 [a0] 136 140 141 142 143 144
+;; live  in      1 [ra] 2 [sp] 8 [s0] 10 [a0] 11 [a1] 12 [a2] 64 [arg] 65 [frame]
+;; live  gen     10 [a0] 140 141 142 143 144
+;; live  kill    10 [a0] 136
+(note 6 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 2 6 3 2 NOTE_INSN_DELETED)
+(note 3 2 4 2 NOTE_INSN_DELETED)
+(note 4 3 5 2 NOTE_INSN_DELETED)
+(note 5 4 17 2 NOTE_INSN_FUNCTION_BEG)
+(insn 17 5 14 2 (set (reg:DI 142)
+        (reg:DI 10 a0 [ Int_1_Par_Val ])) "../test.c":16:1 179 {*movdi_64bit}
+     (expr_list:REG_DEAD (reg:DI 10 a0 [ Int_1_Par_Val ])
+        (nil)))
+(insn 14 17 13 2 (clobber (reg:DI 136 [ <retval> ])) "../test.c":21:1 -1
+     (nil))
+(insn 13 14 18 2 (clobber (reg/i:DI 10 a0)) "../test.c":21:1 -1
+     (expr_list:REG_UNUSED (reg/i:DI 10 a0)
+        (nil)))
+(insn 18 13 8 2 (set (reg:DI 143)
+        (reg:DI 11 a1 [ Int_2_Par_Val ])) "../test.c":16:1 179 {*movdi_64bit}
+     (expr_list:REG_DEAD (reg:DI 11 a1 [ Int_2_Par_Val ])
+        (nil)))
+(insn 8 18 19 2 (set (reg:SI 140 [ Int_Loc ])
+        (plus:SI (subreg:SI (reg:DI 142) 0)
+            (const_int 2 [0x2]))) "../test.c":19:11 4 {addsi3}
+     (expr_list:REG_DEAD (reg:DI 142)
+        (nil)))
+(insn 19 8 9 2 (set (reg:DI 144)
+        (reg:DI 12 a2 [ Int_Par_Ref ])) "../test.c":16:1 179 {*movdi_64bit}
+     (expr_list:REG_DEAD (reg:DI 12 a2 [ Int_Par_Ref ])
+        (nil)))
+(insn 9 19 10 2 (set (reg:SI 141)
+        (plus:SI (reg:SI 140 [ Int_Loc ])
+            (subreg:SI (reg:DI 143) 0))) "../test.c":20:32 4 {addsi3}
+     (expr_list:REG_DEAD (reg:DI 143)
+        (expr_list:REG_DEAD (reg:SI 140 [ Int_Loc ])
+            (nil))))
+(insn 10 9 12 2 (set (mem:SI (reg:DI 144) [1 *Int_Par_Ref_6(D)+0 S4 A32])
+        (reg:SI 141)) "../test.c":20:16 180 {*movsi_internal}
+     (expr_list:REG_DEAD (reg:DI 144)
+        (expr_list:REG_DEAD (reg:SI 141)
+            (nil))))
+(insn 12 10 15 2 (set (reg/i:DI 10 a0)
+        (reg:DI 136 [ <retval> ])) "../test.c":21:1 179 {*movdi_64bit}
+     (expr_list:REG_DEAD (reg:DI 136 [ <retval> ])
+        (nil)))
+(insn 15 12 20 2 (use (reg/i:DI 10 a0)) "../test.c":21:1 -1
+     (nil))
+;;  succ:       EXIT [always]  count:1073741824 (estimated locally) (FALLTHRU)
+;; lr  out       1 [ra] 2 [sp] 8 [s0] 10 [a0] 64 [arg] 65 [frame]
+;; live  out     1 [ra] 2 [sp] 8 [s0] 10 [a0] 64 [arg] 65 [frame]
+
+(note 20 15 0 NOTE_INSN_DELETED)
